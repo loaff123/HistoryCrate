@@ -1,0 +1,322 @@
+{
+  "expected_closure": {
+    "canonical_lfs_occurrences": 34,
+    "data_gitattributes_blob": "2a9827e0c066532d807966aeaa6f2bd4ae0ba354",
+    "dependency_commits": 12,
+    "dependency_git_objects": 51,
+    "dependency_nested_gitlinks": 0,
+    "dependency_tree_objects": 21,
+    "historical_gitmodules_blob": "c9a26c6998d10b8fbefbe50375048d9a5832d3c8",
+    "root_commits": 2518,
+    "root_git_objects": 15351,
+    "root_lfs_payloads": 0,
+    "root_tree_objects": 6273,
+    "safe_punctuation_case": ":wq",
+    "unique_lfs_payload_bytes": 28989160,
+    "unique_lfs_payloads": 11
+  },
+  "fixture_id": "cholla-historical-data-reintroduction",
+  "fixture_version": 1,
+  "fresh_readonly_recheck": {
+    "all_required_payload_hashes_and_sizes_pass": true,
+    "all_source_hashes_equal_original_snapshot": true,
+    "date_utc": "2026-10-19",
+    "downloads_performed": false,
+    "native_git_invoked_on_original_sources": false,
+    "project_code_executed": false,
+    "source_filesystem_entries_excluding_roots": {
+      "cholla": 30,
+      "cholla-data": 67
+    },
+    "source_regular_files": 55
+  },
+  "license": {
+    "caution": "The upstream suffix SOFTWARE.MAGE. and trailing space are preserved verbatim. This notice does not establish license coverage for every third-party portion of the entire histories.",
+    "copyright": "Copyright (c) 2018 Evan E. Schneider",
+    "original_git_blob_oid": "6fea013ea94bc1a219327b2855a753da1155804b",
+    "original_notice_bytes": 1080,
+    "original_notice_sha256": "0d24d0d26d43227625c30aeedbf67b0df53a3bb00ed3893aec219b40a6f5c90a",
+    "original_notice_utf8": "MIT License\n\nCopyright (c) 2018 Evan E. Schneider\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.MAGE. \n",
+    "source_paths": [
+      "cholla:LICENSE.txt",
+      "cholla-data:LICENSE.txt"
+    ],
+    "spdx": "MIT"
+  },
+  "not_established_by_fixture_metadata": [
+    "Per-candidate production API and CLI qualification, elapsed times and sampled resource observations must be executed and recorded separately.",
+    "Prior native-bundle reference measurements used LFS 3.6.1; reproducing that separate manual workflow with LFS 3.8.0 is not implied by API qualification.",
+    "No network syscall trace or OS network containment is claimed.",
+    "Nested, renamed, changed-URL and gitlink-only orphan behavior is covered by original fixtures rather than this Cholla history.",
+    "Fresh upstream download availability and exact historical full-ref reconstruction are not implied by pinned local fixtures."
+  ],
+  "qualification_status": "Declarative pinned fixture and acceptance expectations; current candidate results are recorded separately in docs/qualification.md.",
+  "record_date_utc": "2026-10-19",
+  "reference_measurements": {
+    "all_included_root_revisions_rehearsed": false,
+    "comparison_scope": "Both full bare stores and selected native bundles include exactly the same 11 required local LFS objects. Full-current-ref LFS inventory is not a downloaded baseline.",
+    "compression_reduction_percent_rounded": 72.8,
+    "data_bundle_bytes": 13299,
+    "data_bundle_sha256": "2c2098ff93fb22fb1667d7cf62e413b5d047552d57bf7edbd878ef0354ec109d",
+    "distinct_revisions_rehearsed": 3,
+    "extracted_selected_archive_restorations": 3,
+    "full_stores_restorations": 3,
+    "full_stores_targz_bytes": 86030778,
+    "full_stores_targz_sha256": "7f745c6e49fd5d90632e461430b7eb3c0954722de69755fa7f4a1e9fc66b2a46",
+    "lfs_cache_savings_bytes": 0,
+    "network_policy_for_pack_and_restore": "GIT_ALLOW_PROTOCOL=file",
+    "packet_regular_file_bytes": 48983367,
+    "root_bundle_bytes": 19978471,
+    "root_bundle_sha256": "e4ca5e287518aead3a68ddc8a2cdd2a9f3c5261ee00deff8b87c93b8b55da2dd",
+    "runtime": {
+      "git": "2.52.0",
+      "git_lfs": "3.6.1",
+      "release_qualified": false
+    },
+    "selected_packet_restorations": 3,
+    "selected_packet_targz_bytes": 23427766,
+    "selected_packet_targz_sha256": "458ef2fa917ba05e96e40cd12594c110b3977879ad8c591177700e8b7ff408e7",
+    "selected_payload_bytes": 28989160,
+    "source_immutability": "all regular-file SHA256 unchanged after acquisition",
+    "source_regular_file_bytes": 111849478
+  },
+  "rehearsals": [
+    {
+      "clean": true,
+      "method": "required-acceptance-case",
+      "root_commit": "988e4c5bb8e343d3e3bc4f10cf354595e4b660e9",
+      "submodule_commit": "e8fc667aec7f7f367fdfd1329b81105e1b5f083a",
+      "verified_lfs_files": [
+        {
+          "path": "system_tests/tHYDROSYSTEMSodShockTubeParameterizedMpi_CorrectInputExpectCorrectOutput.h5",
+          "sha256": "bd88a93979a85d1c75ef28d31c1cb5f0f7014200488a560746934f471addd730",
+          "size": 12587920
+        }
+      ]
+    },
+    {
+      "clean": true,
+      "method": "required-acceptance-case",
+      "root_commit": "96e92f3413a5afeea240593d99e6869d597a78f9",
+      "submodule_commit": null,
+      "verified_lfs_files": []
+    },
+    {
+      "clean": true,
+      "method": "required-acceptance-case",
+      "root_commit": "d18e7bb8e167cea183e7da56f2043b85cab50068",
+      "submodule_commit": "66d5928213b495c2fef61b0653b90a25ae3aa7cf",
+      "verified_lfs_files": [
+        {
+          "path": "system_tests/tGRAVITYSYSTEMSphericalCollapse_CorrectInputExpectCorrectOutput.h5",
+          "sha256": "5b6371b26444b302455b838006b7474ec4a65a9d7fc0da27e298e286adba4deb",
+          "size": 174080
+        },
+        {
+          "path": "system_tests/tHYDROSYSTEMSodShockTubeParameterizedMpi_CorrectInputExpectCorrectOutput.h5",
+          "sha256": "23fdae9e7fce87b605ddfed8b122726ed24921eed76822286ca21ec4fef1f0eb",
+          "size": 10496000
+        },
+        {
+          "path": "system_tests/tMHDSYSTEMConstantParameterizedMpi_MagneticFieldCorrectInputExpectCorrectOutput.h5",
+          "sha256": "05a50ceacdaccb166a6dc05af55da7eee0692e4c60540af599c1c13046f15049",
+          "size": 291992
+        },
+        {
+          "path": "system_tests/tMHDSYSTEMConstantParameterizedMpi_ZeroMagneticFieldCorrectInputExpectCorrectOutput.h5",
+          "sha256": "d6ad70a426ec1c91d9ab329f818e984d72549d3a5bfe872936d784fc2dabbf55",
+          "size": 291992
+        },
+        {
+          "path": "system_tests/tPARTICLESSYSTEMSphericalCollapse_CorrectInputExpectCorrectOutput.h5",
+          "sha256": "d0fedc72363584919ae987d73f6fc9feaf16b7ce594af56125aa9ebf9001e997",
+          "size": 3420632
+        }
+      ]
+    }
+  ],
+  "release_policy": {
+    "external_acquisition": "Separate explicitly networked fixture setup, never automatic HistoryCrate fetching.",
+    "redistribute_full_histories": false,
+    "redistribute_payload_assets": false
+  },
+  "required_payloads": {
+    "05a50ceacdaccb166a6dc05af55da7eee0692e4c60540af599c1c13046f15049": {
+      "pointer_blob": "1586420696b2465603323dc99723de9d07de65da",
+      "size": 291992
+    },
+    "1d6836bce6e3779049592b69374a55b21df822b4a53b05934ea3fbf8f0dd9cc5": {
+      "pointer_blob": "223ba5ddad03d2babb3a9bea4a5fcb8b47a6e9d9",
+      "size": 467856
+    },
+    "23fdae9e7fce87b605ddfed8b122726ed24921eed76822286ca21ec4fef1f0eb": {
+      "pointer_blob": "f68cf21af9622c634ff687820b60a00a7fb5902f",
+      "size": 10496000
+    },
+    "2ea95dc220d6d3de87e7e522147c859d2fd9877ac523e83e60674dfe7db2dc63": {
+      "pointer_blob": "da44853c71c045ea7e14307ac690b7beee8a8871",
+      "size": 291992
+    },
+    "5b6371b26444b302455b838006b7474ec4a65a9d7fc0da27e298e286adba4deb": {
+      "pointer_blob": "e11f97a6c726a9d1dd18b7c4d118f2246849381a",
+      "size": 174080
+    },
+    "8926fec1b304aff732d56b8d7fea1ecafac29d8736fd46040ed09c3d3eef5e37": {
+      "pointer_blob": "50b9ab4b9be65c443029f78d4a57d5cb951bfeee",
+      "size": 291992
+    },
+    "91bf918ef00d695fd70fe28c8e1fc7e560cc26e050a7f11334d294e438594bde": {
+      "pointer_blob": "bbae7068b71f37b0a24058618444372bf039e5c0",
+      "size": 467856
+    },
+    "bd88a93979a85d1c75ef28d31c1cb5f0f7014200488a560746934f471addd730": {
+      "pointer_blob": "fd1ed4522682f023a2e6a021b9ec7fff6c4b8814",
+      "size": 12587920
+    },
+    "d0fedc72363584919ae987d73f6fc9feaf16b7ce594af56125aa9ebf9001e997": {
+      "pointer_blob": "0b3917303987755cc9ffb338f99ce2db0e793b0c",
+      "size": 3420632
+    },
+    "d6ad70a426ec1c91d9ab329f818e984d72549d3a5bfe872936d784fc2dabbf55": {
+      "pointer_blob": "d91bcf385eaf11d5f26d3037599a216c89d10516",
+      "size": 291992
+    },
+    "febc4ef3a4eb4d90e49f8c97a71338961880edb71d249add7abe6524638f14b4": {
+      "pointer_blob": "87a7cd21439a72428a59ee4d0885e6e2a12280a2",
+      "size": 206848
+    }
+  },
+  "required_runtime": {
+    "git": "2.52.0",
+    "git_lfs": "3.8.0",
+    "git_lfs_binary_sha256": "1c636bd72c8f57f639fffbd13679066eb5fecea5c5a8212d3bda30d3a20768a5",
+    "qualification_result": "Execute the opt-in harness and consult docs/qualification.md; fixture metadata alone certifies no candidate run."
+  },
+  "research_evidence_sha256": {
+    "RESEARCH-AND-DESIGN.md": "c0eead762c2e25fc465733c4e54ea6e1ab7870e04cf4bffa6b7af851ddc19a69",
+    "public-archive-roundtrip.log": "0c03aa115b1eaa5e87ac258f7607e29e07daa7df7c9d6610aef157e7339bf794",
+    "public-archive-roundtrip.py": "1e1ad90dea69d8cd6e4f217fa73f9532bc19eab94e8282ae52659daaf03aa478",
+    "public-cleanliness.log": "fa02e22fcfe9ce165688d2686131dfee04055727d58305565899d5df8c226d74",
+    "public-cleanliness.sh": "478e1e10f08fea6b80b6ef3e293ba43f71aef6141c3bc617f3108f9d54035b90",
+    "public-closure-analysis.py": "f016dc89155df5a5d35b0f86505ce689f08426ece919db5f824169bc866fdb48",
+    "public-closure.json": "b1f213886ee21ff4e0f14fc09f0bf682d05334588aacf1f5c542b37710e9a754",
+    "public-comparison-results.json": "344d9a2f9d762c5b717efcba314df8820d3aa90be231e8989a9dd6e5f1587ad3",
+    "public-native-comparison.log": "3c1e04f75a1087b2854a80f54665163aeec3425311417a9d5231014f813e028d",
+    "public-native-comparison.py": "b267b8b8a2f97f47efc3e18a7fab40e34104e651dd2409433ede62d9fcebfd90",
+    "public-native-negative.log": "dd789463a551e852b87fa9bc707bf969e36dafce526a99dc80c8accf760d050e",
+    "public-native-negative.py": "ea3fc0cecb517985f75f6016bdebc84729a482ef596c49b4de6593ae28e6d60f",
+    "public-scope-compatibility.log": "cd16fef67b1a89ad52b454a1dd6bedcf2cf95e78d619dcd02f5689138d1631a8",
+    "public-scope-compatibility.py": "32466c923e01fd7051540942b3cfe6dd7e6cac4d09286a722b538b8e81f54605",
+    "public-source-before.json": "36ae66e2f7370451beb9c619a388a92b4ffb244f46d7348017d850aa4393e591"
+  },
+  "scope": "Trusted local source history handoff only; no Cholla scripts, builds, tests, or data generators executed.",
+  "selection": {
+    "binding": {
+      "child_repository": "cholla-data",
+      "parent_repository": "cholla",
+      "path": "cholla-tests-data",
+      "url": "https://github.com/cholla-hydro/cholla-tests-data.git"
+    },
+    "dependency_commit_ids": [
+      "06c032e11cba539725f58e03b231a4793a8fe402",
+      "0edc8dbceb1267b73773c8f0405d0e031eb7762a",
+      "34577601fd4abbdead625b1ea5cfb802a6325f9c",
+      "5a34430345d7dc746637364e8613642ebbbbc5c4",
+      "66d5928213b495c2fef61b0653b90a25ae3aa7cf",
+      "c48d6098b44613b22a3d31b12edb87f0f85234e7",
+      "c80ee3cd05e802b73a8988bc4bceec6e43beb527",
+      "d510254e391ac9709a9d18a5a3bd4a11802bb9d2",
+      "d9caac60522cd4a6bfacd2039c0d371214e47855",
+      "e8fc667aec7f7f367fdfd1329b81105e1b5f083a",
+      "f134f963b7482f164acd4e97bd04bbd4603da35f",
+      "f47450dd2c229a277d4a081ff2993b6687b1912c"
+    ],
+    "historical_dependency_seeds": [
+      "34577601fd4abbdead625b1ea5cfb802a6325f9c",
+      "5a34430345d7dc746637364e8613642ebbbbc5c4",
+      "66d5928213b495c2fef61b0653b90a25ae3aa7cf",
+      "e8fc667aec7f7f367fdfd1329b81105e1b5f083a",
+      "f134f963b7482f164acd4e97bd04bbd4603da35f",
+      "f47450dd2c229a277d4a081ff2993b6687b1912c"
+    ],
+    "root_id": "cholla-history",
+    "root_repository": "cholla",
+    "selected_root_commits": [
+      "d18e7bb8e167cea183e7da56f2043b85cab50068"
+    ]
+  },
+  "sources": [
+    {
+      "id": "cholla",
+      "original_pack_index_object_count": 36714,
+      "original_pack_sha256": "87b36f667ea8fc319670a1691f3ff72e0997741f9d2f601f5d6e01b44a70ab4c",
+      "recorded_full_ref_commit_count": 5843,
+      "recorded_head": "191e59b063b4a4075738b0f016fd2203ab8b1523",
+      "recorded_refs": {
+        "refs/heads/CAAR": {
+          "oid": "8fe5df38f847c9b2cfa480fbc1bbde87a6e19ed6"
+        },
+        "refs/heads/CGOLS": {
+          "oid": "0691e4d1875520b5dfb15c4c7a94577fc0cc59f1"
+        },
+        "refs/heads/RT": {
+          "oid": "e14a6e87433828558dcb95d0996322465e7b4024"
+        },
+        "refs/heads/cosmo-ics": {
+          "oid": "c3cbe22a00076b6812b1733aeece10c1b8c9379c"
+        },
+        "refs/heads/cosmo-rt": {
+          "oid": "3673fb47ac13042bb6a78c6956541566bd3df099"
+        },
+        "refs/heads/cosmo-units": {
+          "oid": "ebf45d182256c531374450d2341e2182455f0479"
+        },
+        "refs/heads/dev": {
+          "oid": "6d9551af34bde4db20136495f621fad1a141de8e"
+        },
+        "refs/heads/fix-frozen-key-hash": {
+          "oid": "d193a7290ca195a87d832663b17c139c37118bd8"
+        },
+        "refs/heads/gh-pages": {
+          "oid": "fd91145addd21ba909744a2c0e9c1edd0e068473"
+        },
+        "refs/heads/main": {
+          "oid": "191e59b063b4a4075738b0f016fd2203ab8b1523"
+        },
+        "refs/heads/pre-commit-ci-update-config": {
+          "oid": "4b3be7a5cd2098256be6f5ad2c57fb8eb1f7c571"
+        },
+        "refs/heads/s99_f": {
+          "oid": "0f431281358468ba99f923162ca5c74442940aed"
+        },
+        "refs/heads/simple-integrator-revisions": {
+          "oid": "acf81b661bdcb1fdd3cd9c1da1b562f35637fce3"
+        },
+        "refs/heads/vl-cosmo-testing": {
+          "oid": "bd7b9ce93a683bbe4a8d629539ce6c125836aae8"
+        },
+        "refs/tags/v2.0.0": {
+          "oid": "81f04b2eead339db069faa43c8d93df41b7e6c9a",
+          "peeled_commit": "9b103536a9087549532ad6be9e4183c75eb78d8a"
+        },
+        "refs/tags/v3.0.0": {
+          "oid": "8478c9ede8a5e2cb72d6481a50023666d489a763"
+        }
+      },
+      "url": "https://github.com/cholla-hydro/cholla.git"
+    },
+    {
+      "id": "cholla-data",
+      "original_pack_index_object_count": 205,
+      "original_pack_sha256": "aef0f9f1532cd5a355b8d3845b74c89eba342fe1775d3f657ac71fd89a3f686d",
+      "recorded_full_ref_commit_count": 39,
+      "recorded_head": "aceebfdd33b3a86b39ec354bfbd630284201b66b",
+      "recorded_refs": {
+        "refs/heads/main": {
+          "oid": "aceebfdd33b3a86b39ec354bfbd630284201b66b"
+        }
+      },
+      "url": "https://github.com/cholla-hydro/cholla-tests-data.git"
+    }
+  ]
+}

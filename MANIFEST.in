@@ -1,0 +1,8 @@
+include README.md SECURITY.md LICENSE SOURCE-MANIFEST.json
+include docs/format.md docs/qualification.md docs/cholla-reproduction.md
+recursive-include tests *.py *.json
+include .github/workflows/ci.yml
+exclude HANDOFF-STAGES3-5.md
+prune tools
+prune evidence
+prune docs/design

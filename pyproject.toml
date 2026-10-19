@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "historycrate"
+version = "0.1.0a1"
+requires-python = ">=3.11"
+description = "Fail-closed selected-history Git and LFS handoffs for trusted local data"
+readme = "README.md"
+license = "MIT"
+[project.scripts]
+historycrate = "historycrate.cli:main"
+[tool.setuptools.packages.find]
+where = ["src"]

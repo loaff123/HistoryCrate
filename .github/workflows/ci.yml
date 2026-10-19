@@ -1,0 +1,105 @@
+name: Original-fixture qualification
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  trusted-local-linux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Prepare exact official native tools in private task storage
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          prefix="$RUNNER_TEMP/historycrate-tools"
+          mkdir -p "$prefix/downloads" "$prefix/build" "$prefix/lfs"
+          cd "$prefix/downloads"
+          curl --fail --location --proto '=https' --tlsv1.2 -o git.tar.xz https://www.kernel.org/pub/software/scm/git/git-2.52.0.tar.xz
+          echo '3cd8fee86f69a949cb610fee8cd9264e6873d07fa58411f6060b3d62729ed7c5  git.tar.xz' | sha256sum -c -
+          curl --fail --location --proto '=https' --tlsv1.2 -o lfs.tar.gz https://github.com/git-lfs/git-lfs/releases/download/v3.8.0/git-lfs-linux-amd64-v3.8.0.tar.gz
+          echo 'e455e00f15d9b95661b8d53498ffb0c3367962cf1ec73c31ab7369516cd6ab8d  lfs.tar.gz' | sha256sum -c -
+          tar -xf git.tar.xz -C "$prefix/build"
+          tar -xf lfs.tar.gz -C "$prefix/lfs" --strip-components=1
+          make -C "$prefix/build/git-2.52.0" -j2 prefix="$prefix/git" NO_GETTEXT=YesPlease NO_TCLTK=YesPlease all
+          make -C "$prefix/build/git-2.52.0" prefix="$prefix/git" NO_GETTEXT=YesPlease NO_TCLTK=YesPlease install
+          echo "HISTORYCRATE_GIT=$prefix/git/bin/git" >> "$GITHUB_ENV"
+          echo "HISTORYCRATE_GIT_LFS=$prefix/lfs/git-lfs" >> "$GITHUB_ENV"
+      - name: Mandatory tests, with no skips
+        shell: bash
+        run: |
+          set -euo pipefail
+          PYTHONPATH=src python3 - <<'PY'
+          import unittest
+          suite = unittest.defaultTestLoader.discover('tests', top_level_dir='.')
+          suite.addTests(unittest.defaultTestLoader.loadTestsFromName('tests.oracle.restore'))
+          result = unittest.TextTestRunner(verbosity=2).run(suite)
+          if not result.wasSuccessful() or result.skipped:
+              raise SystemExit(1)
+          PY
+      - name: Doctor native capability receipt
+        run: PYTHONPATH=src python3 -m historycrate doctor --git "$HISTORYCRATE_GIT" --git-lfs "$HISTORYCRATE_GIT_LFS"
+      - name: Build and install wheel in private task storage
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          wheel_root="$RUNNER_TEMP/historycrate-installed-wheel"
+          mkdir "$wheel_root"
+          mkdir "$wheel_root/wheels" "$wheel_root/work"
+          env -u PYTHONPATH -u PYTHONHOME python3 -m pip wheel --no-deps --wheel-dir "$wheel_root/wheels" "$GITHUB_WORKSPACE"
+          env -u PYTHONPATH -u PYTHONHOME python3 -m venv "$wheel_root/venv"
+          wheels=("$wheel_root"/wheels/historycrate-*.whl)
+          test "${#wheels[@]}" -eq 1
+          env -u PYTHONPATH -u PYTHONHOME "$wheel_root/venv/bin/python" -m pip install --no-index --no-deps "${wheels[0]}"
+          cp -R "$GITHUB_WORKSPACE/tests" "$wheel_root/work/tests"
+      - name: Installed wheel outside checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          wheel_root="$RUNNER_TEMP/historycrate-installed-wheel"
+          cd "$wheel_root/work"
+          env -u PYTHONPATH -u PYTHONHOME "$wheel_root/venv/bin/python" -I -B - <<'PY'
+          import json, os, site, sys, unittest
+          from pathlib import Path
+          import historycrate
+          checkout = Path(os.environ['GITHUB_WORKSPACE']).resolve()
+          work = Path.cwd().resolve()
+          prefix = Path(sys.prefix).resolve()
+          assert sys.prefix != sys.base_prefix and not site.ENABLE_USER_SITE
+          assert 'PYTHONPATH' not in os.environ and 'PYTHONHOME' not in os.environ
+          assert work != checkout and not work.is_relative_to(checkout)
+          assert not checkout.is_relative_to(work) and not (work/'src').exists()
+          assert not (work/'historycrate').exists()
+          assert Path(historycrate.__file__).resolve().is_relative_to(prefix)
+          assert 'site-packages' in Path(historycrate.__file__).parts
+          # Only copied tests/configuration are available beside this cwd.
+          # The installed package is imported before exposing those tests.
+          sys.path.insert(0, str(work))
+          assert all(not Path(p).resolve().is_relative_to(checkout) for p in sys.path if p)
+          modules = ('tests.test_schema', 'tests.test_paths', 'tests.test_publication',
+                     'tests.test_review_packet', 'tests.test_external_provenance',
+                     'tests.test_end_to_end')
+          suite = unittest.defaultTestLoader.loadTestsFromNames(modules)
+          result = unittest.TextTestRunner(verbosity=2).run(suite)
+          origins = {name: str(Path(module.__file__).resolve())
+                     for name, module in sys.modules.items()
+                     if (name == 'historycrate' or name.startswith('historycrate.'))
+                     and getattr(module, '__file__', None)}
+          assert origins and all(Path(p).is_relative_to(prefix) for p in origins.values())
+          assert all(not Path(p).resolve().is_relative_to(checkout) for p in sys.path if p)
+          print(json.dumps({'scope': 'installed-wheel selected native/CLI tests outside checkout',
+                            'tests_run': result.testsRun, 'failures': len(result.failures),
+                            'errors': len(result.errors), 'skips': len(result.skipped),
+                            'installed_module_origins': origins}, sort_keys=True))
+          if not result.wasSuccessful() or result.skipped or result.testsRun == 0:
+              raise SystemExit(1)
+          PY
+          env -u PYTHONPATH -u PYTHONHOME "$wheel_root/venv/bin/historycrate" --help
+          env -u PYTHONPATH -u PYTHONHOME "$wheel_root/venv/bin/python" -I -m historycrate doctor --git "$HISTORYCRATE_GIT" --git-lfs "$HISTORYCRATE_GIT_LFS"
+# External Cholla input acquisition and project execution are never part of this job.
+# This workflow is supplied for a future authorized repository. A local archive
+# cannot establish an exact-release-commit CI result.

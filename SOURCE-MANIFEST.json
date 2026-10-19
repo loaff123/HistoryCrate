@@ -1,7 +1,7 @@
 {
   ".github/workflows/ci.yml": {
-    "bytes": 6384,
-    "sha256": "68f27b72a148213645a99b5e8b357e5fa8d6929afc8b5cd9c5d070e674acdc2b"
+    "bytes": 6393,
+    "sha256": "f19ec57fecec56fd1e3507bc6d662dbb71d80125e1eaf223f7de0e67a7da749e"
   },
   "LICENSE": {
     "bytes": 1082,
@@ -12,8 +12,8 @@
     "sha256": "1bbc5f8737af1fa752fabc866b39eca3a4051bbffa7a6b60d9e2cb7b1bef974a"
   },
   "README.md": {
-    "bytes": 9884,
-    "sha256": "15afac144b3e210821fbc1e029b9eb455c9b59f29cb204bfe72d157ab7bdc727"
+    "bytes": 11035,
+    "sha256": "cefe8c1c7afe1792755c758be4447805762e725edeecb9dbb9e226754aaf665e"
   },
   "SECURITY.md": {
     "bytes": 5127,
@@ -28,8 +28,8 @@
     "sha256": "8637943699fa884cee2f55d18ddbe35fc66c8182dcd973cc1d455e5a6e07d4a4"
   },
   "docs/qualification.md": {
-    "bytes": 8826,
-    "sha256": "c883769b00b7adc64df6e3ba91fb7f5a4321f34cc4dd2bbedfe286691038a22f"
+    "bytes": 10628,
+    "sha256": "570b62ef8849cc77f63eec664b76dd888a445e827e6bfeb56aca16877902c879"
   },
   "pyproject.toml": {
     "bytes": 395,

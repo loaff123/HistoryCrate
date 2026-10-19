@@ -102,5 +102,5 @@ jobs:
           env -u PYTHONPATH -u PYTHONHOME "$wheel_root/venv/bin/historycrate" --help
           env -u PYTHONPATH -u PYTHONHOME "$wheel_root/venv/bin/python" -I -m historycrate doctor --git "$HISTORYCRATE_GIT" --git-lfs "$HISTORYCRATE_GIT_LFS"
 # External Cholla input acquisition and project execution are never part of this job.
-# This workflow is supplied for a future authorized repository. A local archive
-# cannot establish an exact-release-commit CI result.
+# This source-only qualification never publishes packages or runs external project code.
+# Consult the hosted run for the exact commit result.

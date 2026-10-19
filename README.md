@@ -18,6 +18,20 @@ This is a source handoff utility, not a reproducible-build system. Uncommitted f
 
 The initial compatibility profile accepts those exact native versions. HistoryCrate never installs dependencies. Its `doctor` command exercises the selected binaries using original tiny fixtures; ordinary commands recheck the selected toolchain and required capabilities. CLI bootstrap and private jobs use guarded `/tmp` placement, ignoring inherited `TMPDIR` or Python tempfile settings; a protected input containing that location is refused before bootstrap.
 
+## Install from source
+
+This is the public, source-only `0.1.0a1` alpha. No package-registry release or prebuilt native binaries are provided. With the requirements above available, install from a reviewed checkout:
+
+```sh
+git clone https://github.com/loaff123/HistoryCrate.git
+cd HistoryCrate
+python3 -m venv .venv
+.venv/bin/python -m pip install .
+.venv/bin/historycrate --help
+```
+
+Select trusted native Git/LFS paths explicitly for data operations. Review [qualification](docs/qualification.md) and [security boundaries](SECURITY.md) before transferring history.
+
 ## Select local history
 
 Create a UTF-8 JSON file. Commit IDs must be full, lowercase SHA-1 commit IDs. URLs identify exact historical bindings; they are never fetched or normalized.
@@ -85,9 +99,9 @@ Copying complete bare stores plus the same required LFS cache is a simpler manua
 
 Regular tests use original MIT fixtures. The Cholla test is opt-in, requires separately prepared local inputs, and never runs project code. Full third-party histories and payloads are not distributed in this source package. See `docs/cholla-reproduction.md` and `tests/external/cholla.json` for pins, notices, expectations and fair baseline instructions.
 
-The final qualification report distinguishes completed checks from pending gates. Public publication and exact-release-commit CI are separate actions and are not implied by a local candidate archive.
+The reviewed source is published at [loaff123/HistoryCrate](https://github.com/loaff123/HistoryCrate). [Hosted qualification](https://github.com/loaff123/HistoryCrate/actions/runs/39242795973) passed on commit `5b5282674f85a43e47b397c12b22c500e712ca29`: 445 source tests and 111 selected installed-wheel tests, with zero failures, errors or skips. Both doctor checks and wheel build/install also passed. See [qualification](docs/qualification.md) for the exact scope and the earlier CI build failure.
 
-The supplied read-only Linux CI workflow retains the full source suite and adds a separate installed-wheel gate. It installs a built wheel into a fresh virtual environment, copies only the tests/configuration outside the checkout, unsets `PYTHONPATH` and `PYTHONHOME`, verifies package origins remain in that environment, runs selected native/CLI tests with no skips, and checks the installed command entrypoint and doctor. The complete source suite remains responsible for source-layout-specific tests. This workflow has not yet run remotely on a release commit.
+The supplied read-only Linux CI workflow retains the full source suite and adds a separate installed-wheel gate. It installs a built wheel into a fresh virtual environment, copies only the tests/configuration outside the checkout, unsets `PYTHONPATH` and `PYTHONHOME`, verifies package origins remain in that environment, runs selected native/CLI tests with no skips, and checks the installed command entrypoint and doctor. The complete source suite remains responsible for source-layout-specific tests. The CI build uses Git's documented `NO_CURL` option because this offline-only qualification does not use HTTP transports; source checksums and all test gates remain enforced. The [Actions history](https://github.com/loaff123/HistoryCrate/actions) shows results for subsequent exact commits.
 
 Run mandatory original-fixture tests with explicit tool paths:
 
@@ -97,4 +111,4 @@ PYTHONPATH=src python -m unittest discover -s tests -t . -v
 PYTHONPATH=src python -m unittest tests.oracle.restore -v
 ```
 
-Missing native dependencies fail the tests; they are never silently skipped or downloaded. The clean distribution excludes native binaries. Install this package using `python -m pip install /path/to/historycrate-0.1.0a1-py3-none-any.whl`, then select the already trusted native tools explicitly.
+Missing native dependencies fail the tests; they are never silently skipped or downloaded. The clean distribution excludes native binaries. Use the source installation above, or install a separately built local wheel with `python -m pip install /path/to/historycrate-0.1.0a1-py3-none-any.whl`, then select already trusted native tools explicitly.

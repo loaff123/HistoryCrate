@@ -1,12 +1,12 @@
-# Local candidate qualification
+# Qualification and public source status
 
-This unpublished `0.1.0a1` source snapshot was tested on 2026-10-19 using Linux x86-64, Python 3.12.14, Git 2.52.0 and Git LFS 3.8.0. Its profile is **trusted-local-v1**, with ordinary native-process privileges, no OS sandbox and no hard aggregate quota. Other Python/native/platform combinations were not qualified.
+The `0.1.0a1` source candidate was tested locally on 2026-10-19 using Linux x86-64, Python 3.12.14, Git 2.52.0 and Git LFS 3.8.0. Its profile is **trusted-local-v1**, with ordinary native-process privileges, no OS sandbox and no hard aggregate quota. The hosted Linux qualification below is a separate result; other platforms and native versions were not qualified.
 
 ## Original-fixture and independent review gates
 
 - Final production/CLI gate: **438 tests passed, zero failures/errors/skips, 167.583 seconds**. Discovery plus the separate native restore oracle ran; all 61 reviewed source/test/fixture-metadata hashes stayed unchanged.
 - Independent reviews covered strict packets and selected refs, fresh semantic verification, exact LFS bytes, recursive native-clean restoration, prepublication refusals, no-replace races, and postcommit return/cleanup/reporting interruptions. Bootstrap temporary placement, input-contained executables and unused declared sources received explicit refusal regressions.
-- A later harness-only correction passed **16 focused tests, zero skips, 12.846 seconds**, including independent adversarial cases. All 22 production files stayed unchanged. The final distribution's complete test count, installed-wheel smoke and archive hashes are recorded in the accompanying `RELEASE-RECEIPT.json`; those checks do not require another expensive Cholla run.
+- A later harness-only correction passed **16 focused tests, zero skips, 12.846 seconds**, including independent adversarial cases. All 22 production files stayed unchanged. The prepublication distribution receipt recorded its complete test count, installed-wheel smoke and archive hashes. That receipt belongs to the local handoff and is not included in this public repository. Those checks do not require another expensive Cholla run.
 - Doctor exercised 24 capability checks with 40 recorded adapter commands. Its lowered observer tests are original controlled fixtures, not resource containment proofs.
 
 Ordinary tests use original MIT fixtures and never download external inputs. Version/Trace2-conflict negative cases deliberately alter probe responses or trace data after actual native calls; they do not claim a second old tool installation. Unmodified internal-Git Trace2 and executable-identity checks also ran.
@@ -64,8 +64,21 @@ For the two completed API Jobs, process and phase-boundary samples reached 731,8
 
 All advertised maxima are refusal thresholds, not proven capacities. Source atime/global filesystem snapshots and escaped-descendant containment are not promised. Full third-party histories, LFS assets, native binaries and private raw logs are excluded from the distribution.
 
-## Release boundary
+## Public source and hosted qualification
 
-The source handoff has no release commit identity. The supplied CI workflow has not run on an exact release commit. No public repository or public upload was created. The accompanying source manifest and distribution receipt bind the locally checked candidate bytes; they do not establish upstream authenticity or authorize publication.
+The reviewed 71-file source was published at [loaff123/HistoryCrate](https://github.com/loaff123/HistoryCrate) in commit `2e518c86d9c5b9be959e7b633672c4753c9929a5`. All published file object hashes and sizes matched the reviewed source snapshot. Its clean history contains only this project's reviewed original source, tests, fixture metadata, documentation and license notices. No third-party complete repository, LFS payload, native binary, private evidence log or package-registry release was uploaded.
 
-The final CI-only enhancement preserves the complete source suite and adds an installed-wheel gate outside the checkout. It uses a fresh isolated virtual environment, copied tests/configuration without source, unset `PYTHONPATH`/`PYTHONHOME`, checked installed module origins, selected no-skip native/CLI tests, and actual installed entrypoint/doctor smoke calls. Source-layout-specific tests remain in the complete source suite. This enhancement does not change production code or require repeating the real Cholla workflow. The accompanying release receipt records the local delta validation and hash equivalence to the earlier complete distribution gate; it does not claim a remote CI result.
+The [first hosted run](https://github.com/loaff123/HistoryCrate/actions/runs/39242514671) failed during native-tool preparation because the Ubuntu runner lacked libcurl development headers. Both official downloads passed their pinned checksums; product tests had not run. Commit `5b5282674f85a43e47b397c12b22c500e712ca29` changed only the workflow and its source-manifest entry. It uses Git's documented `NO_CURL` build option for the offline CI toolchain. No production source or test was changed or skipped, and no host package installation was added.
+
+[Hosted run 39242795973](https://github.com/loaff123/HistoryCrate/actions/runs/39242795973) completed successfully on that exact commit on 2026-10-19:
+
+- Ubuntu 24.04 x86-64, Python 3.12, exact Git 2.52.0 and Git LFS 3.8.0.
+- 445 mandatory source tests passed in 194.912 seconds, with zero failures, errors or skips.
+- The source doctor passed 24 capability checks.
+- The wheel built and installed successfully into a fresh virtual environment.
+- Outside the checkout, 111 selected native/CLI tests passed in 27.041 seconds, with zero failures, errors or skips. `PYTHONPATH` and `PYTHONHOME` were unset, user-site imports were disabled, and all imported HistoryCrate modules resolved to the installed environment.
+- The installed command entrypoint and installed doctor also passed; doctor again completed 24 capability checks.
+
+The source-layout-specific tests remain in the complete source suite. The hosted workflow does not acquire Cholla inputs, execute third-party project code or repeat the real-history API workflow documented above. Its result is not a claim of OS sandboxing, hard aggregate resource limits, hostile-input safety, support for other native versions, or a full real-Cholla CLI run.
+
+This remains a source-only alpha, with no tagged or package-registry release. `SOURCE-MANIFEST.json` records the current distributed files except itself; hashes establish byte identity, not upstream authenticity. The publication-status documentation update does not alter production source or tests. Refer to the [Actions history](https://github.com/loaff123/HistoryCrate/actions) for results tied to each later exact commit.

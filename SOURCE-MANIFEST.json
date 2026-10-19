@@ -1,7 +1,7 @@
 {
   ".github/workflows/ci.yml": {
-    "bytes": 6253,
-    "sha256": "d1772f06b2dc076d766644f4e54fb0d6b23e2378d57cba5ae3d5d9bb41ac607c"
+    "bytes": 6384,
+    "sha256": "68f27b72a148213645a99b5e8b357e5fa8d6929afc8b5cd9c5d070e674acdc2b"
   },
   "LICENSE": {
     "bytes": 1082,

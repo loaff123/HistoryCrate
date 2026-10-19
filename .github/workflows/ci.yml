@@ -24,8 +24,9 @@ jobs:
           echo 'e455e00f15d9b95661b8d53498ffb0c3367962cf1ec73c31ab7369516cd6ab8d  lfs.tar.gz' | sha256sum -c -
           tar -xf git.tar.xz -C "$prefix/build"
           tar -xf lfs.tar.gz -C "$prefix/lfs" --strip-components=1
-          make -C "$prefix/build/git-2.52.0" -j2 prefix="$prefix/git" NO_GETTEXT=YesPlease NO_TCLTK=YesPlease all
-          make -C "$prefix/build/git-2.52.0" prefix="$prefix/git" NO_GETTEXT=YesPlease NO_TCLTK=YesPlease install
+          # Offline qualification never uses HTTP transports. Avoid a host libcurl dependency.
+          make -C "$prefix/build/git-2.52.0" -j2 prefix="$prefix/git" NO_GETTEXT=YesPlease NO_TCLTK=YesPlease NO_CURL=YesPlease all
+          make -C "$prefix/build/git-2.52.0" prefix="$prefix/git" NO_GETTEXT=YesPlease NO_TCLTK=YesPlease NO_CURL=YesPlease install
           echo "HISTORYCRATE_GIT=$prefix/git/bin/git" >> "$GITHUB_ENV"
           echo "HISTORYCRATE_GIT_LFS=$prefix/lfs/git-lfs" >> "$GITHUB_ENV"
       - name: Mandatory tests, with no skips
